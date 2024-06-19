@@ -25,10 +25,11 @@ public class Main {
 
         car1.color = "Red";
         car2.color = "Blue";
-
-        car1.goTo();
+        int distance1=20;
+        int distance2=100;
+        car1.goTo(distance1);
         paintItBlack(car1);
-        car1.goTo();
+        car1.goTo(distance2);
     }
 
     public static void paintItBlack(Car carToPaint) {
