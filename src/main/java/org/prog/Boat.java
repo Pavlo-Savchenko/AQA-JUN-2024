@@ -9,6 +9,10 @@ public class Boat implements ITransport {
         System.out.println("Boat turns " + direction);
     }
 
+    public void stopAt(String stop) {
+        System.out.println("Boat stoped at the " + stop);
+    }
+
     public void setSail() {
         System.out.println("Set sail!");
     }

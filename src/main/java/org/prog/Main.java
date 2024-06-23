@@ -21,21 +21,50 @@ public class Main {
 
 
     public static void main(String[] args) {
-//        Car car1 = new Car();
-//        Truck truck1 = new Truck();
-//        BigTruck bigTruck = new BigTruck();
-//        BiggestTruck biggestTruck = new BiggestTruck();
-//
-//        car1.setColor("Red");
-//        truck1.setColor("white");
-//        bigTruck.setColor("black");
-//        biggestTruck.setColor("yellow");
-//
-//        car1.goTo();
-//        car1.goTo("Kyiv");
-//        car1.goTo("Odessa", "Lviv");
-//        car1.goTo("Uzhorod", "Kharkiv", "Dnipro");
-//
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        Boat Choven = new Boat();
+        Truck truck1 = new Truck();
+        BigTruck bigTruck = new BigTruck();
+        BiggestTruck biggestTruck = new BiggestTruck();
+
+        car1.setColor("Red");
+        car2.setColor("Red");
+        car3.setColor("Black");
+        truck1.setColor("white");
+        bigTruck.setColor("black");
+        biggestTruck.setColor("yellow");
+
+        Choven.goTo();
+        Choven.stopAt("Beach");
+
+        car1.goTo();
+        car1.goTo("Kyiv");
+        car1.stopAt("Gas Station");
+        car1.goTo("Odessa", "Lviv");
+        car1.stopAt("McDonald`s");
+        car1.goTo("Kyiv","Sumy","Kharkiv");
+
+        car2.goTo();
+        car2.goTo("Kyiv");
+        car2.stopAt("Gas Station");
+        car2.goTo("Chernigiv","Odessa");
+        car2.stopAt("McDonald`s");
+        car2.goTo("Kyiv","Odessa","Dnipro");
+
+        car3.goTo();
+        car2.stopAt("Gas Station");
+
+
+        System.out.println(car1.hashCode());
+        System.out.println(car2.hashCode());
+        System.out.println(car3.hashCode());
+
+        System.out.println(car1.equals(car2) );
+        System.out.println(car1.equals(car3) );
+
+
         Chair chairOne = new Chair();
         Chair chairTwo = new Chair();
         chairOne.color = "white";
