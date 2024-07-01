@@ -30,6 +30,7 @@ public class Car implements ITransport {
     public void setColor(String newColor) {
         if (newColor != null) {
             color = newColor;
+            System.out.println(color);
         }
     }
 
