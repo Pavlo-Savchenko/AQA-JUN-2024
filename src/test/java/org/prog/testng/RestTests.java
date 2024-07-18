@@ -17,7 +17,7 @@ public class RestTests {
     @Test
     public void getRandomUser() {
         RequestSpecification requestSpecification = RestAssured.given();
-        requestSpecification.queryParam("inc", "gender,name,nat");
+        requestSpecification.queryParam("inc", "gender,name,nat,location");
         requestSpecification.queryParam("noinfo");
         requestSpecification.queryParam("results", 10);
         requestSpecification.baseUri("https://randomuser.me/");
@@ -34,7 +34,8 @@ public class RestTests {
 //        Assert.assertTrue(genders.contains("female"));
 
         ResponseDto dto = response.as(ResponseDto.class);
-        Assert.assertEquals(dto.getResults().size(), 10,
-                "Requested 10 results but was " + dto.getResults().size());
+      //  Assert.assertEquals(dto.getResults().size(), 10,
+        //        "Requested 10 results but was " + dto.getResults().size());
+        Assert.assertNotNull(dto.getResults().get(0).getLocation().getCity(),"City не має дорівнювати нулю");
     }
 }
