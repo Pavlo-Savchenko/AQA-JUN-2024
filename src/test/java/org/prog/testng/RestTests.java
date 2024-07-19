@@ -4,6 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
+import org.prog.dto.PersonDto;
 import org.prog.dto.ResponseDto;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -36,6 +37,10 @@ public class RestTests {
         ResponseDto dto = response.as(ResponseDto.class);
       //  Assert.assertEquals(dto.getResults().size(), 10,
         //        "Requested 10 results but was " + dto.getResults().size());
-        Assert.assertNotNull(dto.getResults().get(0).getLocation().getCity(),"City не має дорівнювати нулю");
+        //Assert.assertNotNull(dto.getResults().get(0).getLocation().getCity(),"City не має дорівнювати нулю");
+        dto.getResults();
+        for(PersonDto  el:dto.getResults() ){
+            Assert.assertNotNull( el.getLocation().getCity(),"не має дорівнювати нулю" );
+        }
     }
 }
