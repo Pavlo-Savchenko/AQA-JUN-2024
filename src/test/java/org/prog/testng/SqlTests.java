@@ -27,6 +27,8 @@ public class SqlTests {
     private Statement statement;
     private ResultSet resultSet;
     private WebDriver driver;
+    private final static String INSERT_PATTERN="INSERT INTO IPhoneTable (NamePhone,PrisePhone)" +
+            "VALUES ('%s', '%s')";
     @BeforeSuite
     public void precondition(){
         driver = new ChromeDriver();
@@ -41,8 +43,10 @@ public class SqlTests {
     public void insertIntoDBTest() throws SQLException, ClassNotFoundException {
         connectionToDB();
         try {
+            String str= nameElementFoTable(driver);
             statement.execute("INSERT INTO IPhoneTable (NamePhone,PrisePhone)" +
                     "VALUES ('IPhone15proS', '55000')");
+
         } finally {
             closeConnection();
         }
@@ -64,7 +68,7 @@ public class SqlTests {
             connection.close();
         }
     }
-    private String nameElementFoTable(String fName){
+    public String nameElementFoTable(WebDriver  dr){
         String devise = "iphone 15";
         driver.get("https://allo.ua/");
         WebElement searchBox = driver.findElement(By.name("search") );
@@ -81,8 +85,8 @@ public class SqlTests {
         WebElement nameElement=findName;
         String nameEl=nameElement.getText();
         System.out.println(nameEl );
-
-        return nameEl  ;
+return nameEl ;
     }
 }
+
 
