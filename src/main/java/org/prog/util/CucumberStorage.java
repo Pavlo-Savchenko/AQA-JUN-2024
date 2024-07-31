@@ -6,4 +6,5 @@ import java.util.Map;
 public class CucumberStorage {
 
     public static final Map<String, Object> HOLDER = new HashMap<>();
+
 }

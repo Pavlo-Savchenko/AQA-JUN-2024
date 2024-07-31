@@ -1,43 +1,48 @@
 package org.prog.cucumber.steps;
 
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.prog.page.GooglePage;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.prog.page.AlloPage;
 import org.prog.util.CucumberStorage;
-import org.testng.Assert;
+
+import java.util.List;
+import java.util.Set;
+
 
 public class WebSteps {
 
-    public static GooglePage googlePage;
 
-    @Given("I load google page")
-    public void loadGooglePage() {
-        googlePage.loadPage();
-        googlePage.acceptCookieIfPresent();
+
+    public static String somePhone="iphone 15";
+
+    public static AlloPage alloPage;
+
+    @Given("I load allo page")
+    public void loadAlloPage(){
+        alloPage.loadPage();
+    }
+    @Given("I search searchbox and enter value")
+    public void enterSearchValue(){
+        alloPage.setSearchValue(somePhone);
+    }
+    @Given("I press ENTER")
+    public void pressEnter(){
+        alloPage.executeSearch();
+    }
+    @Given("I click phone")
+    public void clickPhone(){
+        alloPage.getSearchPhoneElement();
+    }
+    @Given("I search phone name")
+    public void searchName(){
+        alloPage.nameElementFoTable();
+    }
+    @Given("I search phone price")
+    public void searchPrice(){
+        alloPage.priseElementFoTable();
     }
 
-    @Given("I take value from {string} and send it to google search")
-    public void setSearchValueToRandomUsersName(String alias) {
-        googlePage.setSearchValue((String) CucumberStorage.HOLDER.get(alias));
-    }
-
-    @When("I perform search")
-    public void executeSearch() {
-        googlePage.executeSearch();
-    }
-
-    @Then("I see at a {int} search results for {string}")
-    public void validateSearchCount(int amount, String alias) {
-        int count = 0;
-        for (WebElement searchHeader : googlePage.getSearchHeaders()) {
-            if (searchHeader.getText().toUpperCase().contains(
-                    ((String) CucumberStorage.HOLDER.get(alias)).toUpperCase())) {
-                count++;
-            }
-        }
-        Assert.assertTrue(count >= amount, "expected at least " + amount
-                + " but was only " + count + " results for " + CucumberStorage.HOLDER.get(alias));
-    }
 }
